@@ -14,7 +14,7 @@ export default {
 #app {
   height: 100%;
   width: 100%;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "微软雅黑", "Avenir", Helvetica, Arial, sans-serif;
   color: #2c3e50;
 }
 </style>

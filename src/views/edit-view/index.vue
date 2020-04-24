@@ -6,33 +6,37 @@
         <el-collapse-item title="资源"
                           name="1">
           <ul>
-            <li>
-              <div>图片</div>
+            <li v-for="(item,index) in sourceData"
+                :key="index">
+              <i class="iconfont"
+                 draggable
+                 v-html="item.icon"></i>
+              <div>{{item.label}}</div>
             </li>
-            <li>
-              <div>图片</div>
-            </li>
-            <li>
-              <div>图片</div>
-            </li>
-            <li>
-              <div>图片</div>
-            </li>
-            <li>
-              <div>图片</div>
-            </li>
-            <li>
-              <div>图片</div>
-            </li>
-            <li>
-              <div>图片</div>
+          </ul>
+        </el-collapse-item>
+        <el-collapse-item title="资源"
+                          name="1">
+          <ul>
+            <li v-for="(item,index) in sourceData"
+                :key="index">
+              <i class="iconfont"
+                 draggable
+                 v-html="item.icon"></i>
+              <div>{{item.label}}</div>
             </li>
           </ul>
         </el-collapse-item>
       </el-collapse>
     </div>
-    <div class="edit-content">
-
+    <div class="edit-content"
+         draggable
+         @drop="drop"
+         @dragover.prevent>
+      <div v-for="item in viewData"
+           :key="item.id"
+           :style="{'left':item.left,'height':item.height,'top':item.top}"
+           class="view-box">1</div>
     </div>
   </div>
 </template>
@@ -40,13 +44,49 @@
 export default {
   data () {
     return {
-      activeNames: 1
+      activeNames: "1",
+      sourceData: [
+        {
+          icon: '&#xe785;',
+          label: "标题"
+        }, {
+          icon: '&#xe785;',
+          label: "富文本"
+        }, {
+          icon: '&#xe785;',
+          label: "图片"
+        }, {
+          icon: '&#xe785;',
+          label: "视频"
+        }
+      ],
+      viewData: [
+        {
+          id: "1",
+          height: '100px',
+          top: '100px',
+          left: '100px'
+        }
+      ]
+    }
+  },
+  methods: {
+    drop (ev) {
+      this.viewData.push(
+        {
+          id: "2",
+          height: '200px',
+          top: '200px',
+          left: '200px'
+        }
+      )
     }
   }
 
 }
 </script>
 <style lang="scss" scoped>
+$icon-size: 36px;
 .edit-content-body {
   position: relative;
   width: 100%;
@@ -69,7 +109,15 @@ export default {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
-    justify-content: space-between;
+    margin: 0;
+    line-height: $icon-size;
+    justify-content: flex-start;
+    li {
+      padding: 8px 4px;
+      cursor: pointer;
+      font-size: 12px;
+      line-height: 16px;
+    }
   }
 }
 .edit-source-menu {
@@ -86,5 +134,17 @@ export default {
   width: calc(100% - 400px);
   height: 100%;
   background-color: #ffffff;
+}
+.iconfont {
+  font-size: $icon-size;
+  + div {
+    width: $icon-size;
+    text-align: center;
+  }
+}
+.view-box {
+  background-color: aqua;
+  width: 200px;
+  position: absolute;
 }
 </style>

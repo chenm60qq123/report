@@ -8,6 +8,10 @@ import elementUI from 'element-ui'
 import './assets/theme/index.css'
 import './assets/css/index.css'
 
+
+//矢量图
+import './assets/icon/ali/iconfont.css'
+
 //滚动条插件的包
 import PerfectScrollbar from 'perfect-scrollbar';
 //对应的css
