@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import elementUI from 'element-ui'
+import echarts from 'echarts'
 // import 'element-ui/lib/theme-chalk/index.css'
 import './assets/theme/index.css'
 import './assets/css/index.css'
@@ -64,6 +65,7 @@ Vue.directive("scrollBar", {
 
 Vue.config.productionTip = false
 Vue.use(elementUI)
+Vue.prototype.$echarts = echarts
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
